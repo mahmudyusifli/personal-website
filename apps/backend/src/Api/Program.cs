@@ -1,3 +1,5 @@
+using Api.Endpoints;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Services
@@ -15,7 +17,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Health check
-app.MapGet("/health", () => Results.Ok(new { status = "Healthy" }));
+// Endpoints
+app.MapHealthEndpoints();
 
 app.Run();
