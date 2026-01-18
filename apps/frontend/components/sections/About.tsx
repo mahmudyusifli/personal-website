@@ -1,37 +1,32 @@
+"use client";
+
 export default function About() {
   return (
-    <section className="min-h-screen bg-neutral-950 text-white flex items-center px-6">
-      <div className="max-w-5xl w-full">
-        <h2 className="text-sm uppercase tracking-widest text-gray-400">
-          System Metrics
-        </h2>
+    <section
+      id="about"
+      className="bg-white text-black px-12 md:px-32 pt-24 pb-32"
+    >
+      <div className="grid grid-cols-12 gap-12">
+        {/* left anchor */}
+        <div className="col-span-12 md:col-span-3 text-sm uppercase tracking-wide">
+          About
+        </div>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 font-mono">
-          <Metric label="Status" value="Stable" accent="text-green-400" />
-          <Metric label="Uptime" value="99.98%" />
-          <Metric label="Primary Role" value="Load Engineer / Software Dev" />
-          <Metric label="Focus" value="Performance & Reliability" />
-          <Metric label="Backend" value=".NET, Distributed Systems" />
-          <Metric label="Frontend" value="Next.js, React, Tailwind" />
+        {/* main content */}
+        <div className="col-span-12 md:col-span-7 space-y-12">
+          <p className="text-xl leading-relaxed max-w-3xl">
+            I work close to the core of software systems, where performance,
+            reliability, and long-term maintainability matter more than
+            surface-level features.
+          </p>
+
+          <p className="text-sm leading-relaxed max-w-2xl">
+            This often means operating in areas where assumptions break down:
+            increased load, unexpected usage patterns, or systems that have
+            grown beyond their original design.
+          </p>
         </div>
       </div>
     </section>
-  );
-}
-
-function Metric({
-  label,
-  value,
-  accent,
-}: {
-  label: string;
-  value: string;
-  accent?: string;
-}) {
-  return (
-    <div className="border border-gray-800 p-4">
-      <p className="text-xs text-gray-500">{label}</p>
-      <p className={`mt-2 text-lg ${accent ?? ""}`}>{value}</p>
-    </div>
   );
 }

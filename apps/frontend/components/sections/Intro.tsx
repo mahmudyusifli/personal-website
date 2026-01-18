@@ -15,7 +15,14 @@ export default function Intro() {
 
   function handleNavigate(id: string) {
     setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+    // wait for menu to unmount
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 50);
   }
 
   return (
