@@ -2,23 +2,34 @@
 
 export default function WhatIDo() {
   return (
-    <section className="min-h-screen bg-black text-white grid grid-cols-[80px_1fr] px-6 md:px-16">
-      {/* spine */}
-      <div className="relative">
-        <div className="absolute left-1/2 top-0 h-full w-px bg-white" />
-      </div>
+    <section className="bg-white text-black px-12 md:px-32 pt-24 pb-32">
+      <div className="grid grid-cols-12 gap-12">
+        {/* left anchor */}
+        <div className="col-span-12 md:col-span-3 text-sm uppercase tracking-wide">
+          Focus
+        </div>
 
-      <div className="flex items-center">
-        <div className="max-w-4xl grid md:grid-cols-2 gap-20">
-          <h2 className="text-4xl md:text-5xl font-medium">Focus</h2>
+        {/* main content */}
+        <div className="col-span-12 md:col-span-7 space-y-12">
+          <p className="text-xl leading-relaxed max-w-3xl">
+            My work usually sits where systems start to bend: traffic spikes,
+            slow degradation, unclear failure modes.
+          </p>
 
-          <div className="space-y-10 text-lg leading-relaxed">
-            <p>Systems designed for real traffic, not demos.</p>
-            <p>Software with explicit failure modes and operational clarity.</p>
-            <p>
-              Performance treated as a design constraint, not an afterthought.
-            </p>
-          </div>
+          <p className="text-base leading-relaxed max-w-2xl">
+            That can mean load testing, performance work, or revisiting
+            architectural decisions that made sense early on but don’t hold
+            anymore.
+          </p>
+        </div>
+
+        {/* right pressure */}
+        <div className="col-span-12 md:col-span-2 text-sm leading-relaxed">
+          Scalability
+          <br />
+          Reliability
+          <br />
+          Performance
         </div>
       </div>
     </section>

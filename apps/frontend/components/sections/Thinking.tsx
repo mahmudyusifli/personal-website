@@ -1,27 +1,25 @@
 "use client";
 
 const thoughts = [
-  "Predictability matters more than raw speed.",
-  "If you don’t design failure, it designs itself.",
-  "Simple systems survive longer.",
+  "Systems rarely fail all at once. They degrade.",
+  "Performance issues are usually design issues in disguise.",
+  "If something only works in ideal conditions, it doesn’t really work.",
 ];
 
 export default function Thinking() {
   return (
-    <section className="min-h-screen bg-black text-white grid grid-cols-[80px_1fr] px-6 md:px-16">
-      <div className="relative">
-        <div className="absolute left-1/2 top-0 h-full w-px bg-white" />
-      </div>
+    <section className="bg-white text-black px-12 md:px-32 pt-24 pb-32">
+      <div className="grid grid-cols-12 gap-12">
+        <div className="col-span-12 md:col-span-3 text-sm uppercase tracking-wide">
+          How I think
+        </div>
 
-      <div className="flex items-center">
-        <div className="max-w-4xl space-y-16">
-          <h2 className="text-4xl md:text-5xl font-medium">Principles</h2>
-
-          <div className="space-y-8 text-xl">
-            {thoughts.map((t, i) => (
-              <p key={i}>— {t}</p>
-            ))}
-          </div>
+        <div className="col-span-12 md:col-span-9 space-y-10 max-w-3xl">
+          {thoughts.map((t, i) => (
+            <p key={i} className="text-xl leading-relaxed">
+              — {t}
+            </p>
+          ))}
         </div>
       </div>
     </section>

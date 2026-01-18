@@ -2,42 +2,39 @@
 
 const experience = [
   {
-    years: "2022 — Now",
-    detail:
-      "Designing and operating systems under sustained load, owning reliability and performance outcomes.",
+    period: "Recent years",
+    text: "Working on production systems with real traffic, where reliability and performance are non-negotiable.",
   },
   {
-    years: "2019 — 2022",
-    detail:
-      "Building backend services, scaling infrastructure, and responding to production failures.",
+    period: "Before that",
+    text: "Building backend services, shipping features, and learning how systems actually fail in production.",
   },
   {
-    years: "Earlier",
-    detail:
-      "Full-stack development and learning how abstractions break at scale.",
+    period: "Early work",
+    text: "Full-stack development and forming a strong intuition for trade-offs and long-term maintenance.",
   },
 ];
 
 export default function Experience() {
   return (
-    <section className="min-h-screen bg-white text-black grid grid-cols-[80px_1fr] px-6 md:px-16">
-      {/* spine */}
-      <div className="relative">
-        <div className="absolute left-1/2 top-0 h-full w-px bg-black" />
-      </div>
+    <section className="bg-white text-black px-12 md:px-32 pt-24 pb-32">
+      <div className="grid grid-cols-12 gap-12">
+        <div className="col-span-12 md:col-span-3 text-sm uppercase tracking-wide">
+          Experience
+        </div>
 
-      <div className="flex items-center">
-        <div className="max-w-4xl w-full">
-          <h2 className="text-4xl md:text-5xl font-medium mb-24">Experience</h2>
-
-          <div className="space-y-20">
-            {experience.map((e, i) => (
-              <div key={i} className="grid md:grid-cols-[160px_1fr] gap-10">
-                <span className="text-sm">{e.years}</span>
-                <p className="text-lg leading-relaxed">{e.detail}</p>
+        <div className="col-span-12 md:col-span-9 space-y-16">
+          {experience.map((item, i) => (
+            <div key={i} className="grid grid-cols-12 gap-8">
+              <div className="col-span-12 md:col-span-3 text-sm">
+                {item.period}
               </div>
-            ))}
-          </div>
+
+              <div className="col-span-12 md:col-span-9 text-base leading-relaxed max-w-3xl">
+                {item.text}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
