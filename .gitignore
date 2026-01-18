@@ -1,0 +1,9 @@
+# .NET
+bin/
+obj/
+.vs/
+*.csproj.user
+
+# Node (future frontend)
+node_modules/
+.env*
