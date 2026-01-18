@@ -1,17 +1,18 @@
-import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
-import Projects from "@/components/sections/Projects";
-import Failure from "@/components/sections/Failure";
+import ContentLayout from "@/components/ui/ContentLayout";
+import Intro from "@/components/sections/Intro";
+import WhatIDo from "@/components/sections/WhatIDo";
+import Work from "@/components/sections/Work";
+import Thinking from "@/components/sections/Thinking";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <About />
-      <Projects />
-      <Failure />
+    <ContentLayout>
+      <Intro />
+      <WhatIDo />
+      <Work />
+      <Thinking />
       <Contact />
-    </>
+    </ContentLayout>
   );
 }
