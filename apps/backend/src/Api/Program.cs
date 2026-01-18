@@ -1,8 +1,10 @@
+using Api.Application.Services;
 using Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Services
+builder.Services.AddScoped<ContactService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -19,5 +21,7 @@ app.UseHttpsRedirection();
 
 // Endpoints
 app.MapHealthEndpoints();
+app.MapContactEndpoints();
+
 
 app.Run();
