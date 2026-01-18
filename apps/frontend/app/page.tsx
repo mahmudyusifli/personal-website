@@ -1,14 +1,15 @@
-import { getHealth } from "@/lib/api";
+import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import Projects from "@/components/sections/Projects";
+import Contact from "@/components/sections/Contact";
 
-export default async function Home() {
-  const health = await getHealth();
-
+export default function Home() {
   return (
-    <main className="p-8">
-      <h1 className="text-2xl font-bold">Personal Website</h1>
-      <p className="mt-4">
-        Backend status: <strong>{health.status}</strong>
-      </p>
-    </main>
+    <>
+      <Hero />
+      <About />
+      <Projects />
+      <Contact />
+    </>
   );
 }
