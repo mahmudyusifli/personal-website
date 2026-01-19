@@ -2,30 +2,25 @@
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="bg-white text-black px-12 md:px-32 pt-24 pb-32"
-    >
-      <div className="grid grid-cols-12 gap-12">
-        {/* left anchor */}
-        <div className="col-span-12 md:col-span-3 text-sm uppercase tracking-wide">
-          About
-        </div>
+    <section id="about" className="px-6 md:px-12 max-w-3xl mx-auto py-24">
+      <h2 className="text-2xl font-normal mb-8">About</h2>
 
-        {/* main content */}
-        <div className="col-span-12 md:col-span-7 space-y-12">
-          <p className="text-xl leading-relaxed max-w-3xl">
-            I work close to the core of software systems, where performance,
-            reliability, and long-term maintainability matter more than
-            surface-level features.
-          </p>
+      <div className="space-y-6 text-base leading-relaxed text-black/80">
+        <p>
+          I work on software systems with a focus on reliability, performance,
+          and long-term maintainability.
+        </p>
 
-          <p className="text-sm leading-relaxed max-w-2xl">
-            This often means operating in areas where assumptions break down:
-            increased load, unexpected usage patterns, or systems that have
-            grown beyond their original design.
-          </p>
-        </div>
+        <p>
+          My work often involves understanding how systems behave under
+          real-world conditions, where assumptions are tested and design
+          decisions start to matter.
+        </p>
+
+        <p>
+          I’m particularly interested in the parts of systems that are hardest
+          to reason about: load, failure, and gradual degradation over time.
+        </p>
       </div>
     </section>
   );
