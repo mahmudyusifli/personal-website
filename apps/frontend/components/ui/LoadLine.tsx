@@ -4,19 +4,17 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function LoadLine() {
   const { scrollYProgress } = useScroll();
-
-  const height = useTransform(scrollYProgress, [0, 1], ["20%", "100%"]);
-  const color = useTransform(
-    scrollYProgress,
-    [0, 0.5, 0.8, 1],
-    ["#22c55e", "#eab308", "#ef4444", "#ffffff"],
-  );
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <div className="fixed left-6 top-0 h-screen w-1 z-50">
+    <div aria-hidden className="fixed right-6 top-0 h-screen w-[2px] z-40">
+      {/* track */}
+      <div className="absolute inset-0 bg-[var(--border)]" />
+
+      {/* progress */}
       <motion.div
-        style={{ height, backgroundColor: color }}
-        className="w-full origin-top rounded-full"
+        style={{ scaleY, transformOrigin: "top" }}
+        className="absolute inset-0 bg-[var(--accent)]"
       />
     </div>
   );

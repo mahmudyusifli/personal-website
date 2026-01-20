@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ======================================================
-   CORE TOKENS — DO NOT REMOVE
+   CORE DESIGN TOKENS (MATCH YOUR JSX)
 ====================================================== */
 
 :root {
@@ -11,17 +11,16 @@
   --muted: rgba(11, 11, 11, 0.62);
 
   --border: rgba(11, 11, 11, 0.12);
-  --border-strong: rgba(11, 11, 11, 0.2);
+  --border-strong: rgba(11, 11, 11, 0.22);
 
   --accent: #ff4da6;
 
-  /* layout */
-  --container-x: clamp(2rem, 6vw, 7rem);
+  /* layout — FIXED (was too aggressive before) */
+  --container-x: clamp(2rem, 5vw, 6rem);
   --section-y: clamp(6rem, 9vw, 9rem);
 
   /* typography */
   --fs-base: 1rem;
-  --fs-lead: 1.15rem;
   --lh-body: 1.75;
 }
 
@@ -32,12 +31,12 @@
     --muted: rgba(255, 255, 255, 0.65);
 
     --border: rgba(255, 255, 255, 0.14);
-    --border-strong: rgba(255, 255, 255, 0.22);
+    --border-strong: rgba(255, 255, 255, 0.24);
   }
 }
 
 /* ======================================================
-   BASE
+   BASE RESET
 ====================================================== */
 
 html,
@@ -55,6 +54,10 @@ body {
     Helvetica,
     Arial,
     sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 p {
@@ -77,53 +80,58 @@ h2 {
    STRUCTURE & RHYTHM
 ====================================================== */
 
-/* horizontal separators you already use */
+section {
+  position: relative;
+}
+
+section + section {
+  margin-top: var(--section-y);
+}
+
+/* horizontal rules used in JSX */
 .hr-subtle {
   height: 1px;
   background: var(--border);
 }
 
-/* give sections a visual frame without cards */
-section {
-  position: relative;
-}
-
-/* add breathing space between sections */
-section + section {
-  margin-top: var(--section-y);
-}
-
-/* make grid columns feel intentional */
+/* grid sanity */
 .grid {
   align-items: start;
 }
 
-/* left column titles */
+/* left column headings */
 section h2 {
   margin-top: 0;
   margin-bottom: 2rem;
 }
 
-/* vertical rule content blocks */
+/* vertical divider content */
 .border-l {
-  border-left-width: 1px;
+  border-left: 1px solid var(--border);
 }
 
-/* improve readability of bordered content */
 .pl-6 {
-  padding-left: 2.5rem;
+  padding-left: 3rem;
 }
 
 /* ======================================================
-   INTRO SPECIFIC (HERO FEELS EMPTY WITHOUT THIS)
+   INTRO / HERO — FIXED PROPERLY
 ====================================================== */
 
+/* hero headline was breaking — this fixes it */
 section:first-of-type h1 {
-  max-width: 22ch;
+  max-width: 32ch;
+  line-height: 1.1;
 }
 
+/* hero paragraph */
 section:first-of-type p {
-  max-width: 42ch;
+  max-width: 44ch;
+}
+
+/* allow hero column to actually be wide */
+section:first-of-type .col-span-12.md\:col-span-8 {
+  max-width: none;
 }
 
 /* metadata row */
@@ -133,7 +141,27 @@ section:first-of-type p {
 }
 
 /* ======================================================
-   MENU — YOU SAID DON’T TOUCH IT (CSS ONLY, SAFE)
+   VISUAL SPINE (SUBTLE, NOT BREAKING)
+====================================================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  left: calc(var(--container-x) - 2.5rem);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--border-strong),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* ======================================================
+   MENU — CSS ONLY, SAFE
 ====================================================== */
 
 button[aria-label="Menu"] span {
@@ -141,20 +169,99 @@ button[aria-label="Menu"] span {
 }
 
 /* ======================================================
-   POLISH (SUBTLE, NOT DESIGNY)
+   LARGE SCREENS — PREVENT COLLAPSE
 ====================================================== */
 
-/* soften everything slightly so it doesn’t look raw */
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* prevent ultra-wide monitors from breaking layout */
-@media (min-width: 1600px) {
+@media (min-width: 1200px) {
   section > div {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
   }
+}
+/* ======================================================
+   WORK SECTION — ALIGN WITH ABOUT / EXPERIENCE
+====================================================== */
+
+#work {
+  padding-left: var(--container-x) !important;
+  padding-right: var(--container-x) !important;
+  padding-top: var(--section-y) !important;
+  padding-bottom: var(--section-y) !important;
+}
+
+/* top horizontal rule like other sections */
+#work::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 1px;
+  background: var(--border);
+}
+
+/* reframe inner layout */
+#work > div {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2.5rem;
+  max-width: none;
+}
+
+/* left column (title) */
+#work h2 {
+  grid-column: span 4 / span 4;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* right column (content) */
+#work .space-y-8 {
+  grid-column: span 8 / span 8;
+  padding-left: 3rem;
+  border-left: 1px solid var(--border);
+}
+
+/* tighten typography to match others */
+#work p {
+  color: var(--muted);
+}
+
+/* responsive fallback */
+@media (max-width: 768px) {
+  #work > div {
+    grid-template-columns: 1fr;
+  }
+
+  #work h2 {
+    grid-column: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  #work .space-y-8 {
+    grid-column: auto;
+    padding-left: 0;
+    border-left: none;
+  }
+}
+/* ======================================================
+   WORK — MATCH SECTION SEPARATOR EXACTLY
+====================================================== */
+
+/* ensure positioning context */
+#work {
+  position: relative;
+}
+
+/* true section divider (same visual weight as others) */
+#work::before {
+  content: "";
+  position: absolute;
+  left: var(--container-x);
+  right: var(--container-x);
+  top: 0;
+  height: 1px;
+  background: var(--border);
 }
