@@ -1,8 +1,8 @@
 import ContentLayout from "@/components/ui/ContentLayout";
 import Intro from "@/components/sections/Intro";
 import About from "@/components/sections/About";
+import Experience from "@/components/sections/Experience";
 import Work from "@/components/sections/Work";
-import Thinking from "@/components/sections/Thinking";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
@@ -10,8 +10,8 @@ export default function Home() {
     <ContentLayout>
       <Intro />
       <About />
+      <Experience />
       <Work />
-      <Thinking />
       <Contact />
     </ContentLayout>
   );

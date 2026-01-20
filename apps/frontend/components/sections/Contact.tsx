@@ -2,27 +2,14 @@
 
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="bg-white text-black px-12 md:px-32 pt-24 pb-40"
-    >
-      <div className="grid grid-cols-12 gap-12">
-        {/* left anchor */}
-        <div className="col-span-12 md:col-span-3 text-sm uppercase tracking-wide">
-          Contact
-        </div>
+    <section id="contact" className="px-12 md:px-32 py-32">
+      <div className="max-w-3xl">
+        <h2 className="text-2xl font-normal mb-8">Contact</h2>
 
-        {/* content */}
-        <div className="col-span-12 md:col-span-7 space-y-8">
-          <p className="text-xl leading-relaxed max-w-2xl">
-            If you’re working on software systems where reliability and scale
-            are important, feel free to reach out.
-          </p>
-
-          <p className="text-sm leading-relaxed">
-            Contact details can be shared on request.
-          </p>
-        </div>
+        <p className="text-base leading-relaxed text-black/80">
+          If you’d like to get in touch about software development, systems
+          work, or collaboration opportunities, feel free to reach out by email.
+        </p>
       </div>
     </section>
   );
