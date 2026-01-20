@@ -1,101 +1,160 @@
 @import "tailwindcss";
 
-/* -------------------------------------------------------
-   System tokens (minimal, editorial, not flat)
-------------------------------------------------------- */
+/* ======================================================
+   CORE TOKENS — DO NOT REMOVE
+====================================================== */
 
 :root {
-  color-scheme: light;
-
+  /* colors */
   --bg: #ffffff;
-  --fg: #0a0a0a;
+  --fg: #0b0b0b;
+  --muted: rgba(11, 11, 11, 0.62);
 
-  /* muted text + subtle dividers */
-  --muted: rgba(10, 10, 10, 0.66);
-  --border: rgba(10, 10, 10, 0.1);
-  --border-strong: rgba(10, 10, 10, 0.16);
+  --border: rgba(11, 11, 11, 0.12);
+  --border-strong: rgba(11, 11, 11, 0.2);
 
-  /* surfaces (very subtle) */
-  --surface: rgba(10, 10, 10, 0.03);
-
-  /* single accent (used sparingly) */
   --accent: #ff4da6;
 
   /* layout */
-  --container-x: clamp(1.25rem, 4vw, 6rem);
-  --section-y: clamp(4.25rem, 6vw, 6.5rem);
-  --radius: 16px;
+  --container-x: clamp(2rem, 6vw, 7rem);
+  --section-y: clamp(6rem, 9vw, 9rem);
 
-  /* type */
-  --font-sans:
-    var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-    "Helvetica Neue", Arial, sans-serif;
-  --font-mono:
-    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, "Liberation Mono", "Courier New", monospace;
+  /* typography */
+  --fs-base: 1rem;
+  --fs-lead: 1.15rem;
+  --lh-body: 1.75;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color-scheme: dark;
-
     --bg: #000000;
     --fg: #ffffff;
-
     --muted: rgba(255, 255, 255, 0.65);
-    --border: rgba(255, 255, 255, 0.12);
-    --border-strong: rgba(255, 255, 255, 0.18);
 
-    --surface: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.14);
+    --border-strong: rgba(255, 255, 255, 0.22);
   }
 }
 
-/* -------------------------------------------------------
-   Base
-------------------------------------------------------- */
+/* ======================================================
+   BASE
+====================================================== */
 
 html,
 body {
-  padding: 0;
   margin: 0;
+  padding: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-sans);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
 }
 
-/* Better default typography rhythm */
 p {
-  text-wrap: pretty;
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--muted);
 }
+
 h1,
-h2,
-h3 {
-  text-wrap: balance;
+h2 {
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
-/* Selection should feel deliberate */
 ::selection {
-  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
-/* -------------------------------------------------------
-   Utilities (used via Tailwind arbitrary values)
-------------------------------------------------------- */
+/* ======================================================
+   STRUCTURE & RHYTHM
+====================================================== */
 
-/* Optional: subtle page grain without “designy” feel */
-.bg-noise {
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    color-mix(in srgb, var(--fg) 6%, transparent) 1px,
-    transparent 0
-  );
-  background-size: 24px 24px;
-  background-position: 0 0;
-  opacity: 0.35;
-}
-
-/* A consistent section divider line */
+/* horizontal separators you already use */
 .hr-subtle {
-  border-top: 1px solid var(--border);
+  height: 1px;
+  background: var(--border);
+}
+
+/* give sections a visual frame without cards */
+section {
+  position: relative;
+}
+
+/* add breathing space between sections */
+section + section {
+  margin-top: var(--section-y);
+}
+
+/* make grid columns feel intentional */
+.grid {
+  align-items: start;
+}
+
+/* left column titles */
+section h2 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* vertical rule content blocks */
+.border-l {
+  border-left-width: 1px;
+}
+
+/* improve readability of bordered content */
+.pl-6 {
+  padding-left: 2.5rem;
+}
+
+/* ======================================================
+   INTRO SPECIFIC (HERO FEELS EMPTY WITHOUT THIS)
+====================================================== */
+
+section:first-of-type h1 {
+  max-width: 22ch;
+}
+
+section:first-of-type p {
+  max-width: 42ch;
+}
+
+/* metadata row */
+.font-mono {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* ======================================================
+   MENU — YOU SAID DON’T TOUCH IT (CSS ONLY, SAFE)
+====================================================== */
+
+button[aria-label="Menu"] span {
+  background-color: var(--fg);
+}
+
+/* ======================================================
+   POLISH (SUBTLE, NOT DESIGNY)
+====================================================== */
+
+/* soften everything slightly so it doesn’t look raw */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* prevent ultra-wide monitors from breaking layout */
+@media (min-width: 1600px) {
+  section > div {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
