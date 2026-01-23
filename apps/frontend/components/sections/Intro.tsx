@@ -131,7 +131,7 @@ export default function Intro() {
                   <button
                     key={s.id}
                     onClick={() => handleNavigate(s.id)}
-                    className="group block text-[clamp(2.25rem,4.2vw,4rem)] font-normal tracking-tight transition-opacity duration-150 hover:opacity-70"
+                    className="group block text-[clamp(1.7rem,3.4vw,3.2rem)] font-normal tracking-tight transition-opacity duration-150 hover:opacity-70"
                   >
                     <span className="inline-flex items-center gap-4">
                       <span className="h-px w-10 bg-[var(--border-strong)] group-hover:bg-[var(--accent)] transition-colors" />
