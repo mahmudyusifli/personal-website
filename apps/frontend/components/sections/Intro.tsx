@@ -76,11 +76,12 @@ export default function Intro() {
               </span>
               <span className="h-px flex-1 bg-[var(--border)]" />
             </div>
-
-            <h1 className="text-[clamp(2.25rem,4.6vw,4.25rem)] leading-[1.08] font-normal tracking-[-0.03em]">
+            <h1 className="text-[clamp(2.4rem,5vw,4.8rem)] leading-[1.08] font-medium tracking-[-0.03em]">
               I work on software systems.
               <br />
-              Mostly the parts that fail
+              <span className="text-[var(--fg)] font-semibold">
+                Mostly the parts that fail
+              </span>
               <br />
               under load, scale, or time.
             </h1>
