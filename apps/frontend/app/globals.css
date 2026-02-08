@@ -265,3 +265,21 @@ button[aria-label="Menu"] span {
   height: 1px;
   background: var(--border);
 }
+section {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--bg) 96%, var(--fg)),
+    transparent
+  );
+}
+a,
+button {
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+
+a:hover {
+  opacity: 0.75;
+}

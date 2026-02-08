@@ -77,7 +77,7 @@ export default function Intro() {
               <span className="h-px flex-1 bg-[var(--border)]" />
             </div>
 
-            <h1 className="text-[clamp(2.25rem,4.6vw,4.25rem)] leading-[1.15] font-normal tracking-[-0.02em]">
+            <h1 className="text-[clamp(2.25rem,4.6vw,4.25rem)] leading-[1.08] font-normal tracking-[-0.03em]">
               I work on software systems.
               <br />
               Mostly the parts that fail
