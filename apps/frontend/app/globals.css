@@ -102,7 +102,12 @@ section + section {
 /* left column headings */
 section h2 {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.85;
 }
 
 /* vertical divider content */
@@ -283,29 +288,24 @@ button {
 a:hover {
   opacity: 0.75;
 }
-/* ===== VISUAL IMPROVEMENT — VERY SUBTLE DEPTH ===== */
+/* ===== GLOBAL SECTION VISUAL UPGRADE ===== */
 
-/* Add a soft background glow to the first (Intro) section */
-section:first-of-type {
-  background: radial-gradient(
-    1600px 800px at 20% -10%,
-    rgba(255, 77, 166, 0.07),
-    transparent 70%
-  );
+/* Give sections breathing + depth */
+section {
+  padding-bottom: calc(var(--section-y) * 0.85);
 }
 
-/* Add a clean “end line” to every section */
-section::after {
-  content: "";
-  position: absolute;
-  left: var(--container-x);
-  right: var(--container-x);
-  bottom: 0;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--border),
-    transparent
-  );
+/* Soft background contrast per section */
+section:nth-of-type(even) {
+  background-color: color-mix(in srgb, var(--bg) 96%, var(--fg));
+}
+
+/* Improve text blocks readability */
+section p {
+  max-width: 60ch;
+}
+
+/* Make lists / metadata feel intentional */
+.font-mono {
+  opacity: 0.85;
 }
